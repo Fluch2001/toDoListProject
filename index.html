@@ -2,13 +2,41 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>To do List</title>
 </head>
 <body>
     <div class="container">
-        <div class="profile"></div>
-        <div class="agregarTarea"></div>
-        <div class="seccionTarea"></div>
+
+
+        <div class="profile">
+            <div id="date">November 20th</div>
+            <h1 class="">Hey Francisco!</h1>
+            <span>Lorem, ipsum dolor.</span>
+        </div>
+        
+        <div class="addTask">
+            <input type="text" id="input" placeholder="Add task.">
+            <i id="enter" class="fas fa-plus-circle"></i>
+        </div>
+        
+        
+        <div class="taskSection">
+            <h3>Pending Tasks:</h3>
+            <ul id="List"></ul>
+            <li>
+                <i class="far fa-circle co" data="done" id="0"></i>
+                <p class="text">Example</p>
+                <i class="fas fa-trash de" data="deleted" id="0"></i>
+            </li>
+
+        </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
