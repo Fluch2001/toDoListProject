@@ -4,7 +4,7 @@ const input = document.querySelector('#input');
 const enterButton = document.querySelector('#enter');
 const check = 'fa-check-circle';
 const uncheck = 'fa-circle';
-const lineThrough = 'line-through';
+const lineThrough = 'lineThrough';
 let id = 0;
 
 // fijarse que va 
