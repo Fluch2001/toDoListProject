@@ -6,6 +6,8 @@ const check = 'fa-check-circle';
 const uncheck = 'fa-circle';
 const lineThrough = 'lineThrough';
 let id = 0;
+const arrayList = [];
+
 
 // fijarse que va 
 console.log(date);
@@ -45,8 +47,14 @@ function deletedTask(element) {
 enterButton.addEventListener('click', () => {
     const taskText = input.value;
     if (taskText) {
-        addTask(taskText, id, false, false);
-    }
+        addTask(taskText, id, false, false)
+        arrayList.push({
+            name:taskText,
+            id:id,
+            done:false,
+            deleted:false
+        })
+    };
     input.value = '';
     id++;
 });
@@ -55,10 +63,17 @@ document.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
         const taskText = input.value;
         if (taskText) {
-            addTask(taskText, id, false, false);
-        }
+            addTask(taskText, id, false, false)
+            arrayList.push({
+            name:taskText,
+            id:id,
+            done:false,
+            deleted:false
+        })
+        };
         input.value = '';
         id++;
+        console.log(arrayList);
     }
 });
 
