@@ -6,11 +6,13 @@ const check = 'fa-check-circle';
 const uncheck = 'fa-circle';
 const lineThrough = 'lineThrough';
 let id = 0;
-const arrayList = [];
+let arrayList = [];
 
 
-// fijarse que va 
-console.log(date);
+// Date time
+
+const DATE = new Date()
+date.innerHTML = DATE.toLocaleDateString('eng-US',{weekday:'long',month:'short',day:'numeric'})
 
 //Add task function
 
@@ -35,13 +37,19 @@ function doneTask(element){
     element.classList.toggle(check);
     element.classList.toggle(uncheck);
     element.parentNode.querySelector('.text').classList.toggle(lineThrough)
+
+    const id = parseInt(element.id);
+    arrayList[id].done = !arrayList[id].done;
 }
 
 // Deleted task function
 
 function deletedTask(element) {
     element.parentNode.parentNode.removeChild(element.parentNode)
-}
+
+    const id = parseInt(element.id);
+    arrayList[id].deleted = true;
+    }
 
 
 enterButton.addEventListener('click', () => {
@@ -55,6 +63,7 @@ enterButton.addEventListener('click', () => {
             deleted:false
         })
     };
+    localStorage.setItem('listToDo',JSON.stringify(arrayList))
     input.value = '';
     id++;
 });
@@ -71,9 +80,9 @@ document.addEventListener('keyup', function(event) {
             deleted:false
         })
         };
+        localStorage.setItem('listToDo',JSON.stringify(arrayList))
         input.value = '';
         id++;
-        console.log(arrayList);
     }
 });
 
@@ -87,4 +96,23 @@ list.addEventListener('click',function(event){
     else if (elementData === 'deleted'){
         deletedTask(element);
     }
+    localStorage.setItem('listToDo',JSON.stringify(arrayList))
 });
+
+// localeStorage get item
+
+let data = localStorage.getItem('listToDo')
+if(data){
+    arrayList = JSON.parse(data)
+    id = arrayList.length
+    loadList(arrayList)
+} else {
+    arrayList = [];
+    id = 0;
+};
+
+function loadList(information){
+    information.forEach(function(i){
+        addTask(i.name, i.id, i.done, i.deleted)
+    })
+}
